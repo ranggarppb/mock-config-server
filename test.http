@@ -1,0 +1,26 @@
+@host=http://localhost:8080/service/config
+
+### Get config
+GET {{host}} http/1.1
+
+
+### Post config
+POST {{host}} http/1.1
+Content-Type: application/json
+
+{
+    "name": "test_config_2",
+    "description": "test_config_2",
+    "type": "test_type_2",
+    "value": "test_value_2",
+    "default": "test_default_2",
+    "required": true,
+    "readonly": true,
+    "hidden": true,
+    "options": [
+      {
+        "name": "test_option_2",
+        "value": "test_value_2"
+      }
+    ]
+}
