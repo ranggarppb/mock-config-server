@@ -31,6 +31,7 @@ Content-Type: application/json
 
 {
     "configId": 1,
-    "name": "test_config_3",
-    "description": "test_config_3"
+    "name": "test_config_4",
+    "description": "test_config_4",
+    "value": "test_value_4"
 }
