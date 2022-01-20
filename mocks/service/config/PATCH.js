@@ -7,7 +7,7 @@ const kafka = new Kafka({ clientId, brokers });
 const producer = kafka.producer();
 const uuid = require("uuid");
 let config = JSON.parse(
-  fs.readFileSync("./mocks/service/config/GET.json", "utf8")
+  fs.readFileSync("./mocks/service/config/configs.json", "utf8")
 );
 
 const triggerUpdateConfigWarning = async (configId, status, updatedField) => {
@@ -35,7 +35,7 @@ const updateConfig = async (requestBody) => {
         updatedConfig,
       ];
       fs.writeFileSync(
-        "./mocks/service/config/GET.json",
+        "./mocks/service/config/configs.json",
         JSON.stringify(config, null, 4)
       );
       if (selectedConfig.isActive)

@@ -2,12 +2,12 @@ const fs = require("fs");
 const { Kafka } = require("kafkajs");
 const clientId = "config-service";
 const brokers = ["localhost:9092"];
-const topic = "test";
+const topic = "configuration";
 const kafka = new Kafka({ clientId, brokers });
 const producer = kafka.producer();
 const uuid = require("uuid");
 let config = JSON.parse(
-  fs.readFileSync("./mocks/service/config/GET.json", "utf8")
+  fs.readFileSync("./mocks/service/config/configs.json", "utf8")
 );
 
 const triggerPostConfigWarning = async (configId) => {
@@ -47,7 +47,7 @@ const postNewConfig = async (requestBody) => {
     config = [...config, latestConfig, newConfig];
 
     fs.writeFileSync(
-      "./mocks/service/config/GET.json",
+      "./mocks/service/config/configs.json",
       JSON.stringify(config, null, 4)
     );
 
