@@ -10,14 +10,14 @@ let config = JSON.parse(
   fs.readFileSync("./mocks/service/config/configs.json", "utf8")
 );
 
-const triggerPostConfigWarning = async (configId) => {
+const triggerPostConfigWarning = async (configId, newConfig) => {
   await producer.connect();
   await producer.send({
     topic,
     messages: [
       {
         key: uuid.v4(),
-        value: JSON.stringify({ configId, status: "invalid" }),
+        value: JSON.stringify({ configId, status: "invalid", newConfig }),
       },
     ],
   });
@@ -60,7 +60,7 @@ const postNewConfig = async (requestBody) => {
 
 module.exports = async function (request, response) {
   const trigger = await postNewConfig(request.body);
-  await triggerPostConfigWarning(trigger.latestConfigId);
+  await triggerPostConfigWarning(trigger.latestConfigId, trigger.newConfig);
 
   response.status(200).send(trigger.newConfig);
 };

@@ -4,32 +4,33 @@ let config = JSON.parse(
 );
 let latestActiveConfig = config.filter(
   (c) =>
-    (c.configId =
-      Math.max.apply(
-        Math,
-        config.map(function (o) {
-          return o.configId;
-        })
-      )) && c.isActive
+    (c.configId = Math.max.apply(
+      Math,
+      config.map(function (o) {
+        return o.configId;
+      })
+    )) && c.isActive
 )[0];
 
 module.exports = async function (request, response) {
-  if (!request.query || +request.query.id !== latestActiveConfig.configId) {
+  if (!request.query) {
+    console.log(latestActiveConfig);
+    response.status(200).send(latestActiveConfig);
     response
       .status(200)
       .send({ latestActiveConfig, needToCreateNewCache: true });
-  } else {
+  } else if (+request.query.id === latestActiveConfig.configId) {
     let requestedField = request.query.field.split(",");
-    requestedField.push("configId");
     const latestActiveConfigFiltered = requestedField.reduce(
       (obj, key) => ({ ...obj, [key]: latestActiveConfig.config[key] }),
       {}
     );
     response
       .status(200)
-      .send({
-        latestActiveConfig: latestActiveConfigFiltered,
-        needToCreateNewCache: false,
-      });
+      .send({ configId: +request.query.id, ...latestActiveConfigFiltered });
+  } else {
+    response.status(400).send({
+      message: "Invalid config id / config has been deactivated",
+    });
   }
 };

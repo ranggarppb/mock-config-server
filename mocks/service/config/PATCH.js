@@ -10,11 +10,16 @@ let config = JSON.parse(
   fs.readFileSync("./mocks/service/config/configs.json", "utf8")
 );
 
-const triggerUpdateConfigWarning = async (configId, status, updatedField) => {
+const triggerUpdateConfigWarning = async (configId, status, newConfig) => {
   await producer.connect();
   await producer.send({
     topic,
-    messages: [{ key: uuid.v4(), value: JSON.stringify({ configId, status, updatedField }),  }],
+    messages: [
+      {
+        key: uuid.v4(),
+        value: JSON.stringify({ configId, status, newConfig }),
+      },
+    ],
   });
 };
 
@@ -42,7 +47,7 @@ const updateConfig = async (requestBody) => {
         resolve({
           updatedConfigId: updatedConfig.configId,
           updatedConfigField: Object.keys(updatedValues),
-          updatedConfig: updatedConfig.config,
+          updatedConfig: updatedConfig,
           needToTriggerWarning: true,
         });
       else
@@ -61,7 +66,11 @@ const updateConfig = async (requestBody) => {
 module.exports = async function (request, response) {
   const trigger = await updateConfig(request.body);
   if (trigger.needToTriggerWarning) {
-    await triggerUpdateConfigWarning(trigger.updatedConfigId, "updated", trigger.updatedConfigField);
+    await triggerUpdateConfigWarning(
+      trigger.updatedConfigId,
+      "updated",
+      trigger.updatedConfig
+    );
   }
 
   response.status(200).send(trigger.updatedConfig);
