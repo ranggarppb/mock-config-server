@@ -1,0 +1,20 @@
+[
+    {
+        "config": {
+            "name": "test_config",
+            "description": "test_config",
+            "type": "test_type",
+            "value": "test_value",
+            "default": "test_default",
+            "required": true,
+            "readonly": true,
+            "hidden": true,
+            "options": [
+                {
+                    "name": "test_option",
+                    "value": "test_value"
+                }
+            ]
+        }
+    }
+]

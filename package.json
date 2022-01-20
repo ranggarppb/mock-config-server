@@ -1,0 +1,29 @@
+{
+  "name": "mock-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/nodemon/bin/nodemon.js ./src/server-mocker.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranggarppb/mock-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ranggarppb/mock-server/issues"
+  },
+  "homepage": "https://github.com/ranggarppb/mock-server#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "connect-api-mocker": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
