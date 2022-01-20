@@ -9,18 +9,18 @@ POST {{host}} http/1.1
 Content-Type: application/json
 
 {
-    "name": "test_config_2",
-    "description": "test_config_2",
-    "type": "test_type_2",
-    "value": "test_value_2",
-    "default": "test_default_2",
+    "name": "test_config_5",
+    "description": "test_config_5",
+    "type": "test_type_5",
+    "value": "test_value_5",
+    "default": "test_default_5",
     "required": true,
     "readonly": true,
     "hidden": true,
     "options": [
       {
-        "name": "test_option_2",
-        "value": "test_value_2"
+        "name": "test_option_5",
+        "value": "test_value_5"
       }
     ]
 }
