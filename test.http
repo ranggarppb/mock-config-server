@@ -24,3 +24,13 @@ Content-Type: application/json
       }
     ]
 }
+
+### Patch config
+PATCH {{host}} http/1.1
+Content-Type: application/json
+
+{
+    "configId": 1,
+    "name": "test_config_2",
+    "description": "test_config_2"
+}
