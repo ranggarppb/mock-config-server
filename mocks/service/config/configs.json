@@ -1,0 +1,42 @@
+[
+    {
+        "configId": 1,
+        "config": {
+            "name": "test_config_4",
+            "description": "test_config_4",
+            "type": "test_type",
+            "value": "test_value_4",
+            "default": "test_default",
+            "required": true,
+            "readonly": true,
+            "hidden": true,
+            "options": [
+                {
+                    "name": "test_option",
+                    "value": "test_value"
+                }
+            ]
+        },
+        "isActive": false
+    },
+    {
+        "configId": 2,
+        "config": {
+            "name": "test_config_5",
+            "description": "test_config_5",
+            "type": "test_type_5",
+            "value": "test_value_5",
+            "default": "test_default_5",
+            "required": true,
+            "readonly": true,
+            "hidden": true,
+            "options": [
+                {
+                    "name": "test_option_5",
+                    "value": "test_value_5"
+                }
+            ]
+        },
+        "isActive": true
+    }
+]

@@ -1,7 +1,7 @@
 @host=http://localhost:8080/service/config
 
 ### Get config
-GET {{host}} http/1.1
+GET {{host}}?id=1&field=name,description,type,default http/1.1
 
 
 ### Post config
