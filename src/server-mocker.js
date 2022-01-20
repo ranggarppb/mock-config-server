@@ -1,6 +1,6 @@
-import express from "express";
-import apiMocker from "connect-api-mocker";
-import "dotenv/config";
+const express = require("express");
+const apiMocker = require("connect-api-mocker");
+require("dotenv").config();
 
 var app = express();
 app.use(apiMocker("/mocks"));
