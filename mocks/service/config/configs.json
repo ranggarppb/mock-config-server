@@ -17,26 +17,6 @@
                 }
             ]
         },
-        "isActive": false
-    },
-    {
-        "configId": 2,
-        "config": {
-            "name": "test_config_6",
-            "description": "test_config_6",
-            "type": "test_type_5",
-            "value": "test_value_6",
-            "default": "test_default_5",
-            "required": true,
-            "readonly": true,
-            "hidden": true,
-            "options": [
-                {
-                    "name": "test_option_5",
-                    "value": "test_value_5"
-                }
-            ]
-        },
         "isActive": true
     }
 ]

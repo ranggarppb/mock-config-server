@@ -13,12 +13,8 @@ let latestActiveConfig = config.filter(
 )[0];
 
 module.exports = async function (request, response) {
-  if (!request.query) {
-    console.log(latestActiveConfig);
+  if (Object.keys(request.query).length === 0) {
     response.status(200).send(latestActiveConfig);
-    response
-      .status(200)
-      .send({ latestActiveConfig, needToCreateNewCache: true });
   } else if (+request.query.id === latestActiveConfig.configId) {
     let requestedField = request.query.field.split(",");
     const latestActiveConfigFiltered = requestedField.reduce(
